@@ -1,0 +1,25 @@
+[project]
+name = "learn-llm"
+version = "0.1.0"
+description = "Default template for PDM package"
+authors = [
+    {name = "Qing Ru", email = "qingru97@gmail.com"},
+]
+dependencies = [
+    "langchain>=0.1.13",
+    "streamlit>=1.32.2",
+    "python-dotenv>=1.0.1",
+    "huggingface-hub>=0.22.2",
+    "fastapi>=0.110.0",
+    "uvicorn>=0.29.0",
+    "elasticsearch>=8.13.0",
+    "loguru>=0.7.2",
+    "langchain-experimental>=0.0.55",
+]
+requires-python = "==3.11.*"
+readme = "README.md"
+license = {text = "lqr"}
+
+
+[tool.pdm]
+distribution = false
