@@ -48,4 +48,4 @@ def get_embedding_model():
     return HuggingFaceEmbeddingModel(model_name=HUGGINGFACE_EMBEDDING_MODEL)._get_model
 
 def get_llm_model():
-    return HuggingFaceLLMModel(model_name=HUGGINGFACE_EMBEDDING_MODEL)._get_model
+    return HuggingFaceLLMModel(model_name=HUGGINGFACE_LLM_MODEL)._get_model

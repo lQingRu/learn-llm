@@ -29,6 +29,7 @@ services:
     networks:
       - elastic-network
 
+# Ensure these directories exist first
 volumes:
   es_data:
     driver: local

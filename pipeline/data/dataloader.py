@@ -1,6 +1,14 @@
 from langchain_community.chat_loaders.telegram import TelegramChatLoader
 from schema.data import TelegramChatMessage
 from typing import List 
+from loguru import logger
+import streamlit as st
+import sys
+
+# def log_callback(record):
+#   st.write(record["message"])
+
+# logger.add(log_callback)
 
 def parse_special_types(nested_message: dict):
   match nested_message.get('type'):
@@ -10,6 +18,7 @@ def parse_special_types(nested_message: dict):
       return nested_message
 
 def preprocess_telegram_message(raw_messages: List[str]) -> List[TelegramChatMessage]:
+  logger.debug("Preprocessing telegram messages now...")
   chat_messages: List[TelegramChatMessage] = []
       
   for raw_message in raw_messages:
@@ -35,8 +44,12 @@ def preprocess_telegram_message(raw_messages: List[str]) -> List[TelegramChatMes
         
   return chat_messages  
 
-def load_data(path: str =  "./dataset/ces_team_group.json") -> List[TelegramChatMessage]:
+def load_data(path: str =  "../dataset/ces_team_group.json") -> List[TelegramChatMessage]:
     loader = TelegramChatLoader(path=path)
     raw_messages = loader.load()
-    return preprocess_telegram_message(raw_messages[0]['messages'])
-    
+    if raw_messages is not None and len(raw_messages[0]['messages'])>0:
+      logger.debug(f"Loading data now... There are {len(raw_messages[0]['messages'])} messages")
+      return preprocess_telegram_message(raw_messages[0]['messages'])
+    else:
+      logger.error(f"No data found in {path}!")
+      sys.exit(1)
