@@ -1,6 +1,6 @@
 import streamlit as st
 import pandas as pd
-from component.apirequest import post_question
+from client.component.api_request import post_question
 
 st.set_page_config(page_title="LLM App", page_icon="🤖")
 

@@ -1,5 +1,5 @@
 from fastapi import APIRouter
-from schema.chatapi import PostQuestionRequestBody
+from api.schema.chat_api import PostQuestionRequestBody
 
 router = APIRouter()
 @router.post("/ask")

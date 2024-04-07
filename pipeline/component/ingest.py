@@ -3,7 +3,7 @@ from typing import List
 import pytz
 from elasticsearch import  Elasticsearch
 from elasticsearch.helpers import bulk
-from schema.esdata import EmbeddingConvo
+from pipeline.schema.es_data import EmbeddingConvo
 from schema.data import TelegramChatMessage
 from config.constants import ELASTICSEARCH_USERNAME, ELASTICSEARCH_PASSWORD, ELASTICSEARCH_URL, ES_CONVERSATION_INDEX, ELASTICSEARCH_SSL_VERIFY
 from model.huggingface_model import get_embedding_model
